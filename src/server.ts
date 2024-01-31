@@ -1,9 +1,12 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
-import { string, z } from "zod";
+import { z } from "zod";
+import path from "path";
 
 const prisma = new PrismaClient();
 const app = express();
+
+app.use(express.static(path.join(__dirname, "..", "views")));
 
 app.get("/", (req, res) => {
   return res.json({ message: "Hello!" });

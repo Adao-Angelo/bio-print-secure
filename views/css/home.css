@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "poppins";
+  src: url("./fonts/Poppins-Regular.ttf");
+}
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  font-family: "poppins";
+}
+body {
+  background-image: url("https://www.cnet.com/a/img/hub/2023/01/21/ec79d7fc-9235-4830-8fc1-77db12800b97/apple-macbook-pro-16-2023-3214.jpg");
+  background-size: cover;
+}
