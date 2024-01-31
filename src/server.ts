@@ -1,11 +1,15 @@
-import fastify from "fastify";
+import express from "express";
 import { PrismaClient } from "@prisma/client";
 import { string, z } from "zod";
 
 const prisma = new PrismaClient();
-const app = fastify();
+const app = express();
 
-app.post("/users", async (request, replay) => {
+app.get("/", (req, res) => {
+  return res.json({ message: "Hello!" });
+});
+
+app.post("/users", async (request, response) => {
   const userSchema = z.object({
     name: z.string(),
     email: z.string(),
@@ -20,14 +24,9 @@ app.post("/users", async (request, replay) => {
       password,
     },
   });
-  return replay.status(201).send();
+  return response.status(201).send();
 });
 
-app
-  .listen({
-    host: "0.0.0.0",
-    port: 4000,
-  })
-  .then(() => {
-    console.log("server runnig at port 4000");
-  });
+app.listen(4000, () => {
+  console.log("server runner at port 4000");
+});
