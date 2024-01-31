@@ -4,7 +4,8 @@
     "ejs": "^3.1.9",
     "fastify": "^4.26.0",
     "prisma": "^5.9.0",
-    "tsup": "^8.0.1"
+    "tsup": "^8.0.1",
+    "zod": "^3.22.4"
   },
   "name": "bio-print-secure",
   "description": "This is a project created with Node JS to read fingerprints. This is an implementation of this functionality to read digital prints!",
