@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Response, Request } from "express";
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 import path from "path";
@@ -6,19 +6,21 @@ import path from "path";
 const prisma = new PrismaClient();
 const app = express();
 
+app.use(express.json());
 //app.use(express.static(path.join(__dirname, "..", "views")));
 
-app.get("/", (req, res) => {
-  return res.json({ message: "Hello!" });
+app.get("/users", async (req, res) => {
+  const users = await prisma.user.findMany();
+  return res.json(users);
 });
 
-app.post("/users", async (request, response) => {
-  const userSchema = z.object({
-    name: z.string(),
-    email: z.string(),
-    password: z.string(),
-  });
-  const { name, email, password } = userSchema.parse(request.body);
+app.delete("/users/:id", async (req, res) => {
+  const id = req.params.id;
+  await prisma.user.delete({ where: { id: id } });
+  res.send();
+});
+app.post("/users", async (request: Request, response: Response) => {
+  const { name, email, password } = request.body;
 
   await prisma.user.create({
     data: {
