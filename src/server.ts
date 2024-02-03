@@ -1,19 +1,19 @@
-import express, { Response, Request } from "express";
+import express, { Response, Request, request, response } from "express";
 import { PrismaClient } from "@prisma/client";
-import { z } from "zod";
 import path from "path";
-
+import Fingerprint from "express-fingerprint";
 const prisma = new PrismaClient();
 const app = express();
-
 app.use(express.json());
-//app.use(express.static(path.join(__dirname, "..", "views")));
-
-app.get("/users", async (req, res) => {
-  const users = await prisma.user.findMany();
-  return res.json(users);
+//app.use(express.static(path.join(__dirname, "..", "public")));
+app.use(Fingerprint);
+app.get("/", (request, response) => {
+  response.send();
 });
 
+app.get("/", (req, res) => {
+  console.log(req.fingerprint);
+});
 app.delete("/users/:id", async (req, res) => {
   const id = req.params.id;
   await prisma.user.delete({ where: { id: id } });
