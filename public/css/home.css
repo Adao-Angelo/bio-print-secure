@@ -8,3 +8,7 @@
   box-sizing: border-box;
   font-family: "poppins";
 }
+.wrapper {
+  width: 400px;
+  height: 400px;
+}
