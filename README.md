@@ -5,3 +5,4 @@ This is a project created with Node JS to read fingerprints. This is an implemen
 
 
 <img src="https://marcomapa.com/artigos/wp-content/uploads/2013/10/leitor-biometrico-digital.jpg">
+
