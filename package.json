@@ -15,7 +15,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch ./src/server.ts"
+    "dev": "tsx watch ./src/server.ts",
+    "js": "nodemon ./src/print.js ",
+    "biuld": "tsup ./src",
+    "start": "node ./dist/server.js"
   },
   "keywords": [],
   "author": "",
