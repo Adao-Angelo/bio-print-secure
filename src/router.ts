@@ -8,7 +8,7 @@ router.post("/print", async (request, response) => {
   const { print } = request.body;
   console.log(print);
 
-  return response.sendStatus(204);
+  return response.send().status(204);
 });
 
 export { router };
